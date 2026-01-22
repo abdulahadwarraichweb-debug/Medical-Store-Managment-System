@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSpark Pharmacy Manager</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- SheetJS for Excel Handling -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="app-background">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+    </div>
+
+    <div class="container">
+        <!-- Left Panel: Search & Inventory -->
+        <section class="panel glass-panel left-panel">
+            <header class="panel-header">
+                <div class="brand">
+                    <i class="fa-solid fa-staff-snake"></i>
+                    <span>VSpark Pharma</span>
+                </div>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="excelFile" accept=".xlsx, .xls" hidden>
+                    <label for="excelFile" class="upload-btn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Data
+                    </label>
+                </div>
+            </header>
+
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search medicines...">
+            </div>
+
+            <div class="inventory-list" id="medicineList">
+                <!-- Empty State -->
+                <div class="empty-state">
+                    <i class="fa-regular fa-file-excel"></i>
+                    <p>Upload functionality ready.<br>Waiting for data file.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Receipt -->
+        <section class="panel glass-panel right-panel">
+            <header class="receipt-header">
+                <h2>Current Receipt</h2>
+                <span class="date" id="currentDate">Jan 15, 2026</span>
+            </header>
+
+            <div class="receipt-body">
+                <table class="receipt-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartItems">
+                        <!-- Items will be injected here via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <footer class="receipt-footer">
+                <div class="total-row">
+                    <span>Total</span>
+                    <span class="total-amount" id="grandTotal">$0.00</span>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Print
+                    </button>
+                    <button class="btn btn-primary" id="whatsappBtn">
+                        <i class="fa-brands fa-whatsapp"></i> Share
+                    </button>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
